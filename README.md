@@ -1,6 +1,7 @@
 # Google Hackathon Project - Setup Guide
 
 ## Table of Contents
+
 1. [Prerequisites](#prerequisites)
 2. [Installation Steps](#installation-steps)
 3. [Environment Variables Setup](#environment-variables-setup)
@@ -17,28 +18,38 @@ Before setting up this project, ensure you have the following installed on your 
 ### Required Software
 
 1. **Flutter SDK** (Version 3.0.0 or higher)
+
    - Download from: https://docs.flutter.dev/get-started/install/windows
    - Direct link: https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.24.5-stable.zip
    - Size: ~1.5 GB
 
 2. **Android Studio** (For Android development)
+
    - Download from: https://developer.android.com/studio
    - Size: ~1 GB
    - Includes: Android SDK, Android Emulator
 
 3. **Git**
+
    - Download from: https://git-scm.com/download/win
    - Size: ~50 MB
 
 4. **Python** (Version 3.8 or higher) - For server component
+
    - Download from: https://www.python.org/downloads/
    - Direct link: https://www.python.org/ftp/python/3.12.1/python-3.12.1-amd64.exe
    - Size: ~25 MB
 
 5. **Visual Studio Code** (Recommended IDE)
+
    - Download from: https://code.visualstudio.com/download
    - Size: ~100 MB
    - Required Extensions: Flutter, Dart
+
+6. **Node.js** (Version 18 or higher) – For backend / server dependencies
+   - Download from: https://nodejs.org/
+   - Recommended: LTS version
+   - Size: ~100 MB
 
 ### System Requirements
 
@@ -59,9 +70,11 @@ Before setting up this project, ensure you have the following installed on your 
 4. Click "Install" and wait for completion
 
 **Verify Installation:**
+
 ```bash
 git --version
 ```
+
 Expected output: `git version 2.43.0.windows.1` (or similar)
 
 ---
@@ -93,6 +106,7 @@ flutter --version
 ```
 
 Expected output:
+
 ```
 Flutter 3.24.5 • channel stable
 Framework • revision abc123...
@@ -137,6 +151,7 @@ This command checks your environment and displays a report. Don't worry if some 
 #### 3.3 Accept Android Licenses
 
 Open Command Prompt and run:
+
 ```bash
 flutter doctor --android-licenses
 ```
@@ -180,6 +195,7 @@ Type `y` and press Enter for each license agreement.
 5. Wait for installation to complete
 
 **Verify Installation:**
+
 ```bash
 python --version
 ```
@@ -187,23 +203,43 @@ python --version
 Expected output: `Python 3.12.1` (or similar)
 
 Also verify pip (Python package manager):
+
 ```bash
 pip --version
 ```
 
 ---
 
-### Step 6: Setup Project
+### Step 6: Install Node.js
 
-#### 6.1 Extract Project Files
+1. Download Node.js from: https://nodejs.org/
+2. Select the **LTS (Long Term Support)** version
+3. Run the installer
+4. Use default installation settings
+5. Ensure the option **“Add to PATH”** is checked
+6. Complete the installation
+
+**Verify Installation:**
+
+```bash
+node --version
+npm --version
+```
+
+---
+
+### Step 7: Setup Project
+
+#### 7.1 Extract Project Files
 
 1. Extract the project zip file
 2. Navigate to the extracted folder:
+
 ```bash
 cd "D:\Google Hackathon - Copy"
 ```
 
-#### 6.2 Install Flutter Dependencies
+#### 7.2 Install Flutter Dependencies
 
 ```bash
 flutter pub get
@@ -211,7 +247,7 @@ flutter pub get
 
 This will download all required Flutter packages listed in `pubspec.yaml`.
 
-#### 6.3 Install Python Dependencies (If requirements.txt exists)
+#### 7.3 Install Python Dependencies (If requirements.txt exists)
 
 ```bash
 # Check if requirements.txt exists
@@ -222,19 +258,30 @@ pip install -r requirements.txt
 ```
 
 Common Python packages that might be needed:
+
 ```bash
 pip install flask
 pip install requests
 pip install python-dotenv
 ```
 
-#### 6.4 Verify Setup
+#### 7.4 Install Node.js Dependencies (Server)
+
+If the project includes a Node.js backend or uses npm-based services:
+
+```bash
+cd server
+npm install
+```
+
+#### 7.5 Verify Setup
 
 ```bash
 flutter doctor -v
 ```
 
 Check that all green checkmarks appear for:
+
 - ✅ Flutter
 - ✅ Android toolchain
 - ✅ VS Code (if installed)
@@ -259,6 +306,7 @@ The PATH environment variable tells Windows where to find executable programs. W
 4. Click "Environment Variables"
 
 You'll see two sections:
+
 - **User variables:** Apply only to your user account
 - **System variables:** Apply to all users on the computer
 
@@ -267,31 +315,39 @@ You'll see two sections:
 After installation, these should be in your PATH:
 
 **Check Flutter:**
+
 ```bash
 where flutter
 ```
+
 Expected: `C:\src\flutter\bin\flutter.bat`
 
 **Check Python:**
+
 ```bash
 where python
 ```
+
 Expected: `C:\Users\YourName\AppData\Local\Programs\Python\Python312\python.exe`
 
 **Check Git:**
+
 ```bash
 where git
 ```
+
 Expected: `C:\Program Files\Git\cmd\git.exe`
 
 ### Firebase Configuration (Already Done)
 
 ⚠️ **Important:** This project uses an existing Firebase project. All configuration is pre-configured:
+
 - ✅ `firebase.json` - Firebase project settings
 - ✅ `.firebaserc` - Project reference
 - ✅ `android/app/google-services.json` - Android configuration
 
 **You do NOT need to:**
+
 - Create a Firebase account
 - Install Firebase CLI
 - Set up a new Firebase project
@@ -306,12 +362,14 @@ Everything is ready to use!
 ### Step 1: Start Android Emulator
 
 #### Option A: Using Android Studio
+
 1. Open Android Studio
 2. Click "More Actions" → "Virtual Device Manager"
 3. Click the ▶️ (Play) button next to your virtual device
 4. Wait for the emulator to fully boot (2-3 minutes)
 
 #### Option B: Using Command Line
+
 ```bash
 # List available emulators
 emulator -list-avds
@@ -321,6 +379,7 @@ emulator -avd Pixel_5_API_33
 ```
 
 #### Option C: Use Physical Android Device
+
 1. Enable "Developer Options" on your phone:
    - Go to Settings → About Phone
    - Tap "Build Number" 7 times
@@ -329,6 +388,7 @@ emulator -avd Pixel_5_API_33
    - Enable "USB Debugging"
 3. Connect phone via USB cable
 4. Verify connection:
+
 ```bash
 flutter devices
 ```
@@ -340,6 +400,7 @@ flutter devices
 ```
 
 Expected output:
+
 ```
 2 connected devices:
 
@@ -350,22 +411,26 @@ Chrome (web)                • chrome        • web-javascript • Google Chro
 ### Step 3: Run the Flutter Application
 
 #### Navigate to Project Directory
+
 ```bash
 cd "D:\Google Hackathon - Copy"
 ```
 
 #### Run the App
+
 ```bash
 flutter run
 ```
 
 **What happens:**
+
 - Flutter compiles your app
 - Installs it on the emulator/device
 - Launches the app
 - Shows console logs
 
 **Expected Output:**
+
 ```
 Launching lib\main.dart on sdk gphone64 arm64 in debug mode...
 Running Gradle task 'assembleDebug'...
@@ -388,6 +453,7 @@ The Flutter DevTools debugger and profiler on sdk gphone64 arm64 is available at
 #### Using Hot Reload (During Development)
 
 While the app is running:
+
 - Press `r` → Hot reload (updates UI instantly)
 - Press `R` → Hot restart (restarts the app)
 - Press `q` → Quit application
@@ -454,6 +520,7 @@ GOOGLE-HACKATHON-COPY/
 **Cause:** Flutter not in PATH or Command Prompt not restarted
 
 **Solution:**
+
 ```bash
 # Close Command Prompt completely
 # Open NEW Command Prompt
@@ -467,6 +534,7 @@ echo %PATH%
 #### 2. "Unable to locate Android SDK"
 
 **Solution:**
+
 ```bash
 # Set ANDROID_HOME environment variable
 # 1. Press Windows + R, type: sysdm.cpl
@@ -483,6 +551,7 @@ flutter doctor -v
 #### 3. "Android licenses not accepted"
 
 **Solution:**
+
 ```bash
 flutter doctor --android-licenses
 # Type 'y' for all licenses
@@ -491,6 +560,7 @@ flutter doctor --android-licenses
 #### 4. "No devices found"
 
 **Solution:**
+
 ```bash
 # Start emulator from Android Studio
 # OR
@@ -507,6 +577,7 @@ flutter devices
 #### 5. Gradle build fails
 
 **Solution:**
+
 ```bash
 # Clean build
 flutter clean
@@ -523,6 +594,7 @@ flutter run
 **Cause:** Python not in PATH
 
 **Solution:**
+
 1. Uninstall Python
 2. Reinstall and **CHECK "Add Python to PATH"**
 3. Restart Command Prompt
@@ -541,6 +613,7 @@ python run.py
 #### 8. App crashes on startup
 
 **Check logs:**
+
 ```bash
 # Run with verbose logging
 flutter run -v
@@ -549,6 +622,7 @@ flutter run -v
 ```
 
 **Common causes:**
+
 - Missing dependencies: Run `flutter pub get`
 - Firebase misconfiguration: Verify files exist
 - Server not running: Start Python server with `python run.py`
@@ -647,11 +721,13 @@ adb install build/app/outputs/flutter-apk/app-release.apk
 ### For Students/Developers:
 
 1. **Firebase is Pre-Configured**
+
    - All Firebase files are included
    - Do NOT create a new Firebase project
    - Do NOT modify Firebase configuration files
 
 2. **Keep Server Running**
+
    - If using Python server, keep it running while testing the app
    - Server logs help debug issues
 
@@ -663,6 +739,7 @@ adb install build/app/outputs/flutter-apk/app-release.apk
 ### For Faculty/Reviewers:
 
 1. **Quick Start:**
+
    - Install Flutter, Android Studio, Python
    - Run `flutter pub get`
    - Start emulator
@@ -670,10 +747,12 @@ adb install build/app/outputs/flutter-apk/app-release.apk
    - Start Python server (if applicable)
 
 2. **All dependencies are listed in:**
+
    - Flutter: `pubspec.yaml`
    - Python: `requirements.txt` (if exists)
 
 3. **Firebase is ready to use:**
+
    - No account creation needed
    - No CLI installation needed
    - Configuration files included
@@ -714,6 +793,7 @@ Before submission, verify:
 ## Contact
 
 For questions or issues:
+
 - Contact project team: [Your email]
 - Check project repository: [Your repo link if any]
 
