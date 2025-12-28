@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "535286008392",
+    "project_id": "surplus-serve-5484d",
+    "storage_bucket": "surplus-serve-5484d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535286008392:android:0ce316438c16e9b4d8267d",
+        "android_client_info": {
+          "package_name": "com.example.surplus_serve"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535286008392-cca9lfb6ebjehsv2lbhuqnhbi8ju2oo0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.surplus_serve",
+            "certificate_hash": "e611797118f1f05b7f010f0e9d99bfd8336d2776"
+          }
+        },
+        {
+          "client_id": "535286008392-hlr8r59fl2afav2chefth0ng04bbcopl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.surplus_serve",
+            "certificate_hash": "b004aae49ccf4b510f09e42674d76249e88a10e9"
+          }
+        },
+        {
+          "client_id": "535286008392-nmmo0q0nstdb7t7as2icparvecliah2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASZqN8gTg-gRjayBmDzQqj7_li8q-7Kl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535286008392-nmmo0q0nstdb7t7as2icparvecliah2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
